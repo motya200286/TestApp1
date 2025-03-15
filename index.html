@@ -1,13 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Арканоид</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ВК Мессенджер</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      margin-top: 20px;
+    }
+    #auth-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4c75a3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #messages {
+      width: 80%;
+      max-width: 600px;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      height: 300px;
+      overflow-y: auto;
+    }
+    #message-input {
+      width: 80%;
+      max-width: 600px;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #send-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <canvas id="gameCanvas"></canvas>
-    <script src="script.js"></script>
+  <h1>ВК Мессенджер</h1>
+  <button id="auth-button">Авторизоваться через ВК</button>
+  <div id="messages"></div>
+  <input type="text" id="message-input" placeholder="Введите сообщение...">
+  <button id="send-button">Отправить</button>
+
+  <script src="app.js"></script>
 </body>
 </html>
