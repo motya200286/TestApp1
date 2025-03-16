@@ -123,6 +123,53 @@
     }
   </style>
 </head>
+  <div>
+  <script src="https://unpkg.com/@vkid/sdk@<3.0.0/dist-sdk/umd/index.js"></script>
+  <script type="text/javascript">
+    if ('VKIDSDK' in window) {
+      const VKID = window.VKIDSDK;
+
+      VKID.Config.init({
+        app: 53266794,
+        redirectUrl: 'https://motya200286.github.io/TestApp1/',
+        responseMode: VKID.ConfigResponseMode.Callback,
+        source: VKID.ConfigSource.LOWCODE,
+        scope: '', // Заполните нужными доступами по необходимости
+      });
+
+      const floatingOneTap = new VKID.FloatingOneTap();
+
+      floatingOneTap.render({
+        scheme: 'dark',
+        appName: 'FirstTest',
+        oauthList: [
+          'ok_ru',
+          'mail_ru'
+        ],
+        showAlternativeLogin: true
+      })
+      .on(VKID.WidgetEvents.ERROR, vkidOnError)
+      .on(VKID.FloatingOneTapInternalEvents.LOGIN_SUCCESS, function (payload) {
+        const code = payload.code;
+        const deviceId = payload.device_id;
+
+        VKID.Auth.exchangeCode(code, deviceId)
+          .then(vkidOnSuccess)
+          .catch(vkidOnError);
+      });
+    
+      function vkidOnSuccess(data) {
+        floatingOneTap.close();
+        
+        // Обработка полученного результата
+      }
+    
+      function vkidOnError(error) {
+        // Обработка ошибки
+      }
+    }
+  </script>
+</div>
 <body>
   <h1>ВК Мессенджер</h1>
   <button id="auth-button">Авторизоваться через ВК</button>
