@@ -8,7 +8,7 @@ const authButton = document.getElementById('auth-button');
 
 // Замените YOUR_CLIENT_ID на ваш ID приложения ВКонтакте
 const CLIENT_ID = '5961097';
-const REDIRECT_URI = 'https://motya200286.github.io/TestApp1/';
+const REDIRECT_URI = 'https://oauth.vk.com/blank.html';
 
 // Авторизация через ВК
 authButton.addEventListener('click', () => {
@@ -23,9 +23,9 @@ function getAccessTokenFromUrl() {
   return params.get('access_token');
 }
 
-accessToken = getAccessTokenFromUrl();
-
-if (accessToken) {
+// Извлечение токена
+if (window.location.href.includes('access_token')) {
+  accessToken = getAccessTokenFromUrl();
   authButton.style.display = 'none';
   loadMessages();
 }
