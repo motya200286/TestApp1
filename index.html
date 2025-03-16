@@ -39,7 +39,7 @@
           redirectUrl: 'https://motya200286.github.io/TestApp1/', // Замените на ваш URL
           responseMode: VKID.ConfigResponseMode.Callback,
           source: VKID.ConfigSource.LOWCODE,
-          scope: 'email', // Добавьте необходимые права доступа
+          scope: 'photo,email', // Оставьте пустым или добавьте права доступа
         });
 
         const floatingOneTap = new VKID.FloatingOneTap();
@@ -63,8 +63,9 @@
         function vkidOnSuccess(data) {
           floatingOneTap.close();
 
-          // Обработка полученного результата
           const accessToken = data.access_token;
+          console.log('Access Token:', accessToken);
+
           fetchUserInfo(accessToken);
         }
 
@@ -78,6 +79,13 @@
           fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
+              console.log('API Response:', data);
+
+              if (data.error) {
+                console.error('Ошибка API:', data.error.error_msg);
+                return;
+              }
+
               if (data.response && data.response.length > 0) {
                 const user = data.response[0];
                 displayUserInfo(user);
