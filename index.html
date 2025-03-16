@@ -5,54 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ВК Мессенджер</title>
   <style>
+    /* Общие стили */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: #f5f5f5;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      min-height: 100vh;
+      color: #333;
     }
+
     h1 {
       margin-top: 20px;
+      font-size: 2rem;
+      color: #4c75a3;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     }
+
+    /* Кнопка авторизации */
     #auth-button {
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 12px 30px;
       background-color: #4c75a3;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 25px;
+      font-size: 1rem;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
+    #auth-button:hover {
+      background-color: #3a5f8c;
+    }
+
+    /* Блок сообщений */
     #messages {
-      width: 80%;
+      width: 90%;
       max-width: 600px;
       margin-top: 20px;
-      padding: 10px;
-      background-color: white;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       height: 300px;
       overflow-y: auto;
+      border: 1px solid #e0e0e0;
     }
-    #message-input {
-      width: 80%;
-      max-width: 600px;
-      margin-top: 10px;
+
+    #messages div {
+      margin-bottom: 10px;
       padding: 10px;
-      border: 1px solid #ccc;
       border-radius: 5px;
+      background-color: #f0f4f8;
+      word-wrap: break-word;
+      font-size: 0.9rem;
     }
+
+    /* Поле ввода сообщения */
+    #message-input {
+      width: 90%;
+      max-width: 600px;
+      margin-top: 15px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    #message-input:focus {
+      border-color: #4c75a3;
+      box-shadow: 0 0 5px rgba(76, 117, 163, 0.5);
+    }
+
+    /* Кнопка отправки */
     #send-button {
-      margin-top: 10px;
-      padding: 10px 20px;
+      margin-top: 15px;
+      padding: 12px 30px;
       background-color: #4caf50;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 25px;
+      font-size: 1rem;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #send-button:hover {
+      background-color: #43a047;
+    }
+
+    /* Анимация загрузки */
+    .loading {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
     }
   </style>
 </head>
