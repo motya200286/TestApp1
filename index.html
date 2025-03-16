@@ -39,7 +39,7 @@
           redirectUrl: 'https://motya200286.github.io/TestApp1/', // Замените на ваш URL
           responseMode: VKID.ConfigResponseMode.Callback,
           source: VKID.ConfigSource.LOWCODE,
-          scope: 'photo,email', // Оставьте пустым или добавьте права доступа
+          scope: '', // Оставьте пустым или добавьте права доступа
         });
 
         const floatingOneTap = new VKID.FloatingOneTap();
@@ -99,6 +99,12 @@
         }
 
         function displayUserInfo(user) {
+          // Удаление предыдущего контейнера, если он существует
+          const existingProfile = document.querySelector('.profile');
+          if (existingProfile) {
+            existingProfile.remove();
+          }
+
           const profileContainer = document.createElement('div');
           profileContainer.className = 'profile';
 
@@ -121,6 +127,18 @@
 
           document.body.appendChild(profileContainer);
         }
+
+        // Обработка обновления страницы
+        document.addEventListener('DOMContentLoaded', () => {
+          const urlParams = new URLSearchParams(window.location.search);
+          const code = urlParams.get('code');
+
+          if (code) {
+            VKID.Auth.exchangeCode(code, '')
+              .then(vkidOnSuccess)
+              .catch(vkidOnError);
+          }
+        });
       } else {
         console.error('VKID SDK не загружен.');
       }
