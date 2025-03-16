@@ -7,8 +7,8 @@ const sendButton = document.getElementById('send-button');
 const authButton = document.getElementById('auth-button');
 
 // Замените YOUR_CLIENT_ID на ваш ID приложения ВКонтакте
-const CLIENT_ID = 'YOUR_CLIENT_ID';
-const REDIRECT_URI = 'https://your-github-username.github.io/your-repo-name/';
+const CLIENT_ID = '5961097';
+const REDIRECT_URI = 'https://motya200286.github.io/TestApp1/';
 
 // Авторизация через ВК
 authButton.addEventListener('click', () => {
